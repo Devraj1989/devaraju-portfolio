@@ -85,7 +85,7 @@ export function CaseStudiesSection({
   return (
     <section
       id="work"
-      className="relative border-b border-zinc-200 py-16 sm:py-20 dark:border-zinc-800"
+      className="relative border-b border-zinc-200 py-16 sm:py-22 dark:border-zinc-800"
     >
       <div
         aria-hidden="true"
@@ -94,19 +94,19 @@ export function CaseStudiesSection({
         VERIFIED CASE STUDIES
       </div>
 
-      <div className="mx-auto max-w-[1160px] px-5 sm:px-8">
+      <div className="mx-auto max-w-[1200px] px-4 sm:px-8">
         <div className="flex flex-col justify-between gap-6 lg:flex-row lg:items-end">
           <div className="max-w-2xl">
-            <p className="text-xs font-semibold tracking-wide text-blue-700 dark:text-blue-400">
+            <p className="text-sm font-semibold tracking-wide text-blue-700 dark:text-blue-400">
               Proof &amp; Turnarounds
             </p>
-            <h2 className="mt-2 font-display text-2xl font-bold tracking-tight text-zinc-950 sm:text-3xl dark:text-white">
+            <h2 className="mt-2 font-display text-3xl font-bold tracking-tight text-zinc-950 sm:text-4xl dark:text-white">
               Verified{' '}
-              <em className="font-semibold italic text-blue-700 dark:text-blue-400">
+              <span className="text-blue-700 dark:text-blue-400">
                 case studies
-              </em>
+              </span>
             </h2>
-            <p className="mt-2.5 text-base leading-relaxed text-zinc-600 dark:text-zinc-300">
+            <p className="mt-3 text-lg leading-relaxed text-zinc-600 dark:text-zinc-300">
               Scannable Problem → Execution → Outcome breakdowns across SaaS, CRM, and e-commerce.
             </p>
           </div>
@@ -126,7 +126,7 @@ export function CaseStudiesSection({
                   role="tab"
                   aria-selected={active}
                   onClick={() => onCategoryChange(tab.id)}
-                  className={`rounded-md px-3 py-1.5 text-xs font-semibold whitespace-nowrap shrink-0 transition-colors duration-150 ${
+                  className={`min-h-[40px] rounded-md px-3.5 py-2 text-sm font-semibold whitespace-nowrap shrink-0 transition-colors duration-150 ${
                     active
                       ? 'bg-blue-700 text-white dark:bg-blue-600'
                       : 'text-zinc-600 hover:text-zinc-950 dark:text-zinc-400 dark:hover:text-white'
@@ -139,11 +139,11 @@ export function CaseStudiesSection({
           </div>
         </div>
 
-        {/* Quick-Jump Index Strip for Easy Navigation */}
+        {/* Quick-Jump Index Strip */}
         {filteredStudies.length > 1 && (
           <nav
             aria-label="Quick jump to case studies"
-            className="mt-6 flex flex-wrap items-center gap-x-5 gap-y-2 border-y border-zinc-200 py-3 text-xs dark:border-zinc-800"
+            className="mt-7 flex flex-wrap items-center gap-x-6 gap-y-2.5 border-y border-zinc-200 py-3.5 text-sm dark:border-zinc-800"
           >
             <span className="font-mono font-medium text-zinc-500 dark:text-zinc-400">
               Quick jump:
@@ -152,7 +152,7 @@ export function CaseStudiesSection({
               <a
                 key={study.id}
                 href={`#case-${study.id}`}
-                className="font-medium text-zinc-700 whitespace-nowrap transition-colors hover:text-blue-700 hover:underline hover:underline-offset-4 dark:text-zinc-300 dark:hover:text-blue-400"
+                className="font-medium text-zinc-800 whitespace-nowrap transition-colors hover:text-blue-700 hover:underline hover:underline-offset-4 dark:text-zinc-200 dark:hover:text-blue-400"
               >
                 <span className="font-mono text-zinc-400 dark:text-zinc-500">
                   0{index + 1}.
@@ -164,8 +164,8 @@ export function CaseStudiesSection({
         )}
 
         {activePillarInfo && (
-          <div className="mt-6 flex flex-wrap items-center justify-between gap-3 rounded-lg border border-blue-200 bg-blue-50 px-4 py-2.5 text-xs dark:border-blue-500/40 dark:bg-zinc-900">
-            <span className="text-zinc-700 dark:text-zinc-200">
+          <div className="mt-6 flex flex-wrap items-center justify-between gap-3 rounded-lg border border-blue-200 bg-blue-50 px-4 py-3 text-sm dark:border-blue-500/40 dark:bg-zinc-900">
+            <span className="text-zinc-800 dark:text-zinc-200">
               Showing case studies using{' '}
               <strong className="font-semibold text-blue-700 dark:text-blue-400">
                 Pillar {activePillarInfo.number}: {activePillarInfo.title}
@@ -183,7 +183,7 @@ export function CaseStudiesSection({
 
         {filteredStudies.length === 0 ? (
           <div className="mt-8 rounded-2xl border border-zinc-200 bg-white p-8 text-center dark:border-zinc-800 dark:bg-zinc-900">
-            <p className="text-sm text-zinc-600 dark:text-zinc-300">
+            <p className="text-base text-zinc-600 dark:text-zinc-300">
               No case studies match this combination of domain and pillar filter.
             </p>
             <button
@@ -192,26 +192,26 @@ export function CaseStudiesSection({
                 onCategoryChange('all');
                 onClearPillarFilter();
               }}
-              className="mt-3 rounded-lg bg-blue-700 px-4 py-2 text-xs font-semibold text-white dark:bg-blue-600"
+              className="mt-4 min-h-[42px] rounded-lg bg-blue-700 px-5 py-2 text-sm font-semibold text-white dark:bg-blue-600"
             >
               Reset all filters
             </button>
           </div>
         ) : (
-          <div className="mt-8 space-y-5">
+          <div className="mt-8 space-y-6">
             {filteredStudies.map((study, index) => {
               const Icon3D = STUDY_ICONS[study.id] ?? Icon3DProfitChart;
               return (
                 <article
                   id={`case-${study.id}`}
                   key={study.id}
-                  className="group rounded-2xl border border-zinc-200 bg-white p-6 transition-colors duration-150 hover:border-zinc-300 sm:p-7 dark:border-zinc-800 dark:bg-zinc-900 dark:hover:border-zinc-700"
+                  className="group rounded-2xl border border-zinc-200 bg-white p-5 transition-colors duration-150 hover:border-zinc-300 sm:p-8 dark:border-zinc-800 dark:bg-zinc-900 dark:hover:border-zinc-700"
                 >
-                  <div className="flex flex-col justify-between gap-4 border-b border-zinc-100 pb-5 sm:flex-row sm:items-start dark:border-zinc-800">
+                  <div className="flex flex-col justify-between gap-4 border-b border-zinc-100 pb-5 lg:flex-row lg:items-start dark:border-zinc-800">
                     <div className="flex items-start gap-4">
-                      <Icon3D className="mt-1 hidden h-11 w-11 shrink-0 sm:block" />
+                      <Icon3D className="mt-1 hidden h-12 w-12 shrink-0 sm:block" />
                       <div>
-                        <div className="flex flex-wrap items-center gap-x-2.5 gap-y-1 text-xs text-zinc-500 dark:text-zinc-400">
+                        <div className="flex flex-wrap items-center gap-x-2.5 gap-y-1 text-sm text-zinc-500 dark:text-zinc-400">
                           <span className="font-mono font-medium text-blue-700 dark:text-blue-400">
                             Case 0{index + 1}
                           </span>
@@ -222,42 +222,42 @@ export function CaseStudiesSection({
                           <span aria-hidden="true">·</span>
                           <span>{study.pillarLabels.join(' / ')}</span>
                         </div>
-                        <h3 className="mt-1.5 font-display text-xl font-bold text-zinc-950 dark:text-white">
+                        <h3 className="mt-2 font-display text-xl font-bold text-zinc-950 sm:text-2xl dark:text-white">
                           {study.title}
                         </h3>
-                        <p className="mt-1 text-sm text-zinc-600 dark:text-zinc-300">
+                        <p className="mt-1.5 text-base text-zinc-600 dark:text-zinc-300">
                           {study.subtitle}
                         </p>
                       </div>
                     </div>
 
-                    <div className="flex flex-col items-start gap-2 sm:items-end shrink-0">
-                      <span className="-rotate-1 font-mono text-base font-medium text-emerald-700 tabular-nums whitespace-nowrap transition-transform duration-150 group-hover:rotate-0 dark:text-emerald-400">
+                    <div className="flex flex-wrap items-center justify-between gap-3 pt-1 lg:flex-col lg:items-end lg:pt-0 shrink-0">
+                      <span className="-rotate-1 font-mono text-base font-medium text-emerald-700 tabular-nums whitespace-nowrap transition-transform duration-150 group-hover:rotate-0 sm:text-lg dark:text-emerald-400">
                         {study.headlineMetric}
                       </span>
                       <button
                         type="button"
                         onClick={() => onSelectCaseStudy(study.id)}
-                        className="inline-flex items-center gap-1.5 text-xs font-semibold text-blue-700 whitespace-nowrap transition-colors hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300"
+                        className="inline-flex min-h-[38px] items-center gap-1.5 text-sm font-semibold text-blue-700 whitespace-nowrap transition-colors hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300"
                       >
                         Inspect click-to-profit flow
-                        <ArrowUpRight className="h-3.5 w-3.5" aria-hidden="true" />
+                        <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
                       </button>
                     </div>
                   </div>
 
                   {/* Bullet-Pointed Scannable Problem / Execution / Outcome Grid */}
-                  <div className="mt-5 grid grid-cols-1 gap-6 md:grid-cols-3">
+                  <div className="mt-6 grid grid-cols-1 gap-6 md:grid-cols-3">
                     <div>
-                      <h4 className="text-xs font-semibold text-zinc-500 dark:text-zinc-400">
+                      <h4 className="text-sm font-semibold text-zinc-500 dark:text-zinc-400">
                         Problem
                       </h4>
-                      <ul className="mt-2.5 space-y-2 text-sm leading-snug text-zinc-700 dark:text-zinc-300">
+                      <ul className="mt-3 space-y-2.5 text-base leading-relaxed text-zinc-700 dark:text-zinc-300">
                         {study.problemPoints.map((point) => (
-                          <li key={point} className="flex items-start gap-2">
+                          <li key={point} className="flex items-start gap-2.5">
                             <span
                               aria-hidden="true"
-                              className="mt-2 h-1.5 w-1.5 rounded-full bg-zinc-400 shrink-0 dark:bg-zinc-500"
+                              className="mt-2.5 h-1.5 w-1.5 rounded-full bg-zinc-400 shrink-0 dark:bg-zinc-500"
                             />
                             <span>{point}</span>
                           </li>
@@ -266,15 +266,15 @@ export function CaseStudiesSection({
                     </div>
 
                     <div>
-                      <h4 className="text-xs font-semibold text-zinc-500 dark:text-zinc-400">
+                      <h4 className="text-sm font-semibold text-zinc-500 dark:text-zinc-400">
                         Execution
                       </h4>
-                      <ul className="mt-2.5 space-y-2 text-sm leading-snug text-zinc-700 dark:text-zinc-300">
+                      <ul className="mt-3 space-y-2.5 text-base leading-relaxed text-zinc-700 dark:text-zinc-300">
                         {study.actionPoints.map((point) => (
-                          <li key={point} className="flex items-start gap-2">
+                          <li key={point} className="flex items-start gap-2.5">
                             <span
                               aria-hidden="true"
-                              className="mt-2 h-1.5 w-1.5 rounded-full bg-blue-700 shrink-0 dark:bg-blue-400"
+                              className="mt-2.5 h-1.5 w-1.5 rounded-full bg-blue-700 shrink-0 dark:bg-blue-400"
                             />
                             <span>{point}</span>
                           </li>
@@ -283,13 +283,13 @@ export function CaseStudiesSection({
                     </div>
 
                     <div>
-                      <h4 className="text-xs font-semibold text-emerald-700 dark:text-emerald-400">
+                      <h4 className="text-sm font-semibold text-emerald-700 dark:text-emerald-400">
                         Verified Outcome
                       </h4>
-                      <ul className="mt-2.5 space-y-2 text-sm font-medium leading-snug text-emerald-700 dark:text-emerald-400">
+                      <ul className="mt-3 space-y-2.5 text-base font-medium leading-relaxed text-emerald-700 dark:text-emerald-400">
                         {study.resultPoints.map((point) => (
-                          <li key={point} className="flex items-start gap-2">
-                            <Check className="mt-0.5 h-4 w-4 shrink-0" aria-hidden="true" />
+                          <li key={point} className="flex items-start gap-2.5">
+                            <Check className="mt-1 h-4 w-4 shrink-0" aria-hidden="true" />
                             <span>{point}</span>
                           </li>
                         ))}
@@ -318,7 +318,7 @@ export function CaseStudiesSection({
           >
             <div className="flex items-start justify-between gap-4 border-b border-zinc-200 pb-4 dark:border-zinc-800">
               <div>
-                <p className="text-xs text-zinc-500 dark:text-zinc-400">
+                <p className="text-sm text-zinc-500 dark:text-zinc-400">
                   {activeStudy.account} <span aria-hidden="true">·</span> {activeStudy.period}
                 </p>
                 <h3
@@ -332,47 +332,47 @@ export function CaseStudiesSection({
                 type="button"
                 onClick={() => onSelectCaseStudy(null)}
                 aria-label="Close case study details"
-                className="inline-flex h-9 w-9 items-center justify-center rounded-lg border border-zinc-200 text-zinc-600 hover:bg-zinc-100 hover:text-zinc-950 shrink-0 dark:border-zinc-700 dark:text-zinc-300 dark:hover:bg-zinc-800"
+                className="inline-flex h-10 w-10 items-center justify-center rounded-lg border border-zinc-200 text-zinc-600 hover:bg-zinc-100 hover:text-zinc-950 shrink-0 dark:border-zinc-700 dark:text-zinc-300 dark:hover:bg-zinc-800"
               >
-                <X className="h-4 w-4" />
+                <X className="h-5 w-5" />
               </button>
             </div>
 
             {/* Mini Click -> Instrumentation -> Profit Visual Chain */}
             <div className="mt-5 grid grid-cols-1 gap-3 rounded-xl border border-zinc-200 bg-[#FAFAFA] p-4 sm:grid-cols-3 dark:border-zinc-800 dark:bg-zinc-950">
               <div className="flex items-center gap-2.5">
-                <Icon3DClickTarget className="h-8 w-8 shrink-0" />
+                <Icon3DClickTarget className="h-9 w-9 shrink-0" />
                 <div className="min-w-0">
-                  <div className="font-mono text-[10px] text-zinc-500 dark:text-zinc-400">
+                  <div className="font-mono text-xs text-zinc-500 dark:text-zinc-400">
                     01. Channels
                   </div>
-                  <div className="truncate text-xs font-semibold text-zinc-950 dark:text-white">
+                  <div className="truncate text-sm font-semibold text-zinc-950 dark:text-white">
                     {activeStudy.technicalArchitecture.channels[0]}
                   </div>
                 </div>
-                <ArrowRight className="ml-auto hidden h-3.5 w-3.5 text-blue-700 sm:block" />
+                <ArrowRight className="ml-auto hidden h-4 w-4 text-blue-700 sm:block" />
               </div>
 
               <div className="flex items-center gap-2.5">
-                <Icon3DAttributionPrism className="h-8 w-8 shrink-0" />
+                <Icon3DAttributionPrism className="h-9 w-9 shrink-0" />
                 <div className="min-w-0">
-                  <div className="font-mono text-[10px] text-zinc-500 dark:text-zinc-400">
+                  <div className="font-mono text-xs text-zinc-500 dark:text-zinc-400">
                     02. Signal
                   </div>
-                  <div className="truncate text-xs font-semibold text-zinc-950 dark:text-white">
+                  <div className="truncate text-sm font-semibold text-zinc-950 dark:text-white">
                     Revenue &amp; CRM Sync
                   </div>
                 </div>
-                <ArrowRight className="ml-auto hidden h-3.5 w-3.5 text-emerald-700 sm:block" />
+                <ArrowRight className="ml-auto hidden h-4 w-4 text-emerald-700 sm:block" />
               </div>
 
               <div className="flex items-center gap-2.5">
-                <Icon3DProfitChart className="h-8 w-8 shrink-0" />
+                <Icon3DProfitChart className="h-9 w-9 shrink-0" />
                 <div className="min-w-0">
-                  <div className="font-mono text-[10px] text-zinc-500 dark:text-zinc-400">
-                    03. Verified Outcome
+                  <div className="font-mono text-xs text-zinc-500 dark:text-zinc-400">
+                    03. Outcome
                   </div>
-                  <div className="truncate font-mono text-xs font-medium text-emerald-700 dark:text-emerald-400">
+                  <div className="truncate font-mono text-sm font-medium text-emerald-700 dark:text-emerald-400">
                     {activeStudy.headlineMetric}
                   </div>
                 </div>
@@ -380,35 +380,35 @@ export function CaseStudiesSection({
             </div>
 
             <div className="mt-5 rounded-xl border border-zinc-200 bg-[#FAFAFA] p-4 dark:border-zinc-800 dark:bg-zinc-950">
-              <div className="text-xs font-medium text-zinc-500 dark:text-zinc-400">
+              <div className="text-sm font-medium text-zinc-500 dark:text-zinc-400">
                 Headline Impact
               </div>
               <div className="mt-1 font-mono text-lg font-medium text-emerald-700 tabular-nums dark:text-emerald-400">
                 {activeStudy.headlineMetric}
               </div>
-              <p className="mt-1.5 text-sm leading-relaxed text-zinc-700 dark:text-zinc-300">
+              <p className="mt-1.5 text-base leading-relaxed text-zinc-700 dark:text-zinc-300">
                 {activeStudy.resultSummary}
               </p>
             </div>
 
             <div className="mt-6 space-y-5">
               <div>
-                <h4 className="text-xs font-semibold text-zinc-500 dark:text-zinc-400">
+                <h4 className="text-sm font-semibold text-zinc-500 dark:text-zinc-400">
                   Channels &amp; Platforms
                 </h4>
-                <p className="mt-1.5 text-sm text-zinc-950 dark:text-zinc-100">
+                <p className="mt-1.5 text-base text-zinc-950 dark:text-zinc-100">
                   {activeStudy.technicalArchitecture.channels.join(' · ')}
                 </p>
               </div>
 
               <div>
-                <h4 className="text-xs font-semibold text-zinc-500 dark:text-zinc-400">
+                <h4 className="text-sm font-semibold text-zinc-500 dark:text-zinc-400">
                   Tracking &amp; Instrumentation
                 </h4>
-                <ul className="mt-2 space-y-1.5 text-sm text-zinc-700 dark:text-zinc-300">
+                <ul className="mt-2 space-y-2 text-base text-zinc-700 dark:text-zinc-300">
                   {activeStudy.technicalArchitecture.instrumentation.map((item) => (
-                    <li key={item} className="flex items-start gap-2">
-                      <span className="mt-2 h-1 w-1 rounded-full bg-blue-700 shrink-0 dark:bg-blue-400" />
+                    <li key={item} className="flex items-start gap-2.5">
+                      <span className="mt-2.5 h-1.5 w-1.5 rounded-full bg-blue-700 shrink-0 dark:bg-blue-400" />
                       <span>{item}</span>
                     </li>
                   ))}
@@ -416,13 +416,13 @@ export function CaseStudiesSection({
               </div>
 
               <div>
-                <h4 className="text-xs font-semibold text-zinc-500 dark:text-zinc-400">
+                <h4 className="text-sm font-semibold text-zinc-500 dark:text-zinc-400">
                   Key Allocation Decisions
                 </h4>
-                <ul className="mt-2 space-y-1.5 text-sm text-zinc-700 dark:text-zinc-300">
+                <ul className="mt-2 space-y-2 text-base text-zinc-700 dark:text-zinc-300">
                   {activeStudy.technicalArchitecture.decisions.map((item) => (
-                    <li key={item} className="flex items-start gap-2">
-                      <span className="mt-2 h-1 w-1 rounded-full bg-blue-700 shrink-0 dark:bg-blue-400" />
+                    <li key={item} className="flex items-start gap-2.5">
+                      <span className="mt-2.5 h-1.5 w-1.5 rounded-full bg-blue-700 shrink-0 dark:bg-blue-400" />
                       <span>{item}</span>
                     </li>
                   ))}
@@ -430,12 +430,12 @@ export function CaseStudiesSection({
               </div>
             </div>
 
-            <div className="mt-7 flex items-center justify-between border-t border-zinc-200 pt-4 text-xs text-zinc-500 dark:border-zinc-800 dark:text-zinc-400">
-              <span>Pillars applied: {activeStudy.pillarLabels.join(' · ')}</span>
+            <div className="mt-7 flex flex-wrap items-center justify-between gap-4 border-t border-zinc-200 pt-4 text-sm text-zinc-500 dark:border-zinc-800 dark:text-zinc-400">
+              <span>Pillars: {activeStudy.pillarLabels.join(' · ')}</span>
               <button
                 type="button"
                 onClick={() => onSelectCaseStudy(null)}
-                className="rounded-lg bg-blue-700 px-4 py-2 font-semibold text-white hover:bg-blue-800 dark:bg-blue-600 dark:hover:bg-blue-500"
+                className="min-h-[42px] rounded-lg bg-blue-700 px-5 py-2 font-semibold text-white hover:bg-blue-800 dark:bg-blue-600 dark:hover:bg-blue-500"
               >
                 Close
               </button>

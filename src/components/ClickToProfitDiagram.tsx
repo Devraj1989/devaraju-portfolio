@@ -211,7 +211,7 @@ export function ClickToProfitDiagram() {
   return (
     <section
       id="journey"
-      className="relative border-b border-zinc-200 py-16 sm:py-20 dark:border-zinc-800"
+      className="relative border-b border-zinc-200 py-16 sm:py-22 dark:border-zinc-800"
     >
       <div
         aria-hidden="true"
@@ -220,20 +220,20 @@ export function ClickToProfitDiagram() {
         CLICK TO PROFIT ARCHITECTURE
       </div>
 
-      <div className="mx-auto max-w-[1160px] px-5 sm:px-8">
+      <div className="mx-auto max-w-[1200px] px-4 sm:px-8">
         <div className="flex flex-col justify-between gap-6 lg:flex-row lg:items-end">
           <div className="max-w-2xl">
-            <p className="text-xs font-semibold tracking-wide text-blue-700 dark:text-blue-400">
+            <p className="text-sm font-semibold tracking-wide text-blue-700 dark:text-blue-400">
               End-to-End Attribution Diagram
             </p>
-            <h2 className="mt-2 font-display text-2xl font-bold tracking-tight text-zinc-950 sm:text-3xl dark:text-white">
+            <h2 className="mt-2 font-display text-3xl font-bold tracking-tight text-zinc-950 sm:text-4xl dark:text-white">
               Connecting the journey from{' '}
-              <em className="font-semibold italic text-blue-700 dark:text-blue-400">click</em> to{' '}
-              <em className="font-semibold italic text-emerald-700 dark:text-emerald-400">
+              <span className="text-blue-700 dark:text-blue-400">click</span> to{' '}
+              <span className="text-emerald-700 dark:text-emerald-400">
                 provable profit
-              </em>
+              </span>
             </h2>
-            <p className="mt-3 text-base leading-relaxed text-zinc-600 dark:text-zinc-300">
+            <p className="mt-3 text-lg leading-relaxed text-zinc-600 dark:text-zinc-300">
               Toggle between real account scenarios and compare an untracked leaky funnel against
               the instrumented click-to-profit pipeline.
             </p>
@@ -244,12 +244,12 @@ export function ClickToProfitDiagram() {
             <div
               role="group"
               aria-label="Diagram state comparison"
-              className="flex items-center gap-1 rounded-lg border border-zinc-200 bg-white p-1 dark:border-zinc-800 dark:bg-zinc-900"
+              className="grid w-full grid-cols-2 gap-1 rounded-lg border border-zinc-200 bg-white p-1 sm:flex sm:w-auto dark:border-zinc-800 dark:bg-zinc-900"
             >
               <button
                 type="button"
                 onClick={() => setViewMode('verified')}
-                className={`rounded-md px-3 py-1.5 text-xs font-semibold whitespace-nowrap shrink-0 transition-colors ${
+                className={`min-h-[42px] rounded-md px-3.5 py-2 text-sm font-semibold whitespace-nowrap transition-colors ${
                   viewMode === 'verified'
                     ? 'bg-blue-700 text-white dark:bg-blue-600'
                     : 'text-zinc-600 hover:text-zinc-950 dark:text-zinc-400 dark:hover:text-white'
@@ -260,7 +260,7 @@ export function ClickToProfitDiagram() {
               <button
                 type="button"
                 onClick={() => setViewMode('leaks')}
-                className={`rounded-md px-3 py-1.5 text-xs font-semibold whitespace-nowrap shrink-0 transition-colors ${
+                className={`min-h-[42px] rounded-md px-3.5 py-2 text-sm font-semibold whitespace-nowrap transition-colors ${
                   viewMode === 'leaks'
                     ? 'bg-zinc-950 text-white dark:bg-zinc-100 dark:text-zinc-950'
                     : 'text-zinc-600 hover:text-zinc-950 dark:text-zinc-400 dark:hover:text-white'
@@ -273,8 +273,12 @@ export function ClickToProfitDiagram() {
         </div>
 
         {/* Scenario Selector Bar */}
-        <div className="mt-8 flex flex-wrap items-center justify-between gap-4 border-b border-zinc-200 pb-4 dark:border-zinc-800">
-          <div role="tablist" aria-label="Select click-to-profit scenario" className="flex flex-wrap gap-2">
+        <div className="mt-8 flex flex-col justify-between gap-4 border-b border-zinc-200 pb-4 lg:flex-row lg:items-center dark:border-zinc-800">
+          <div
+            role="tablist"
+            aria-label="Select click-to-profit scenario"
+            className="flex flex-wrap gap-2"
+          >
             {JOURNEY_SCENARIOS.map((item) => {
               const isSelected = item.id === scenario.id;
               return (
@@ -284,7 +288,7 @@ export function ClickToProfitDiagram() {
                   role="tab"
                   aria-selected={isSelected}
                   onClick={() => setScenarioId(item.id)}
-                  className={`rounded-lg border px-3.5 py-2 text-xs font-semibold whitespace-nowrap shrink-0 transition-colors ${
+                  className={`min-h-[42px] rounded-lg border px-4 py-2 text-sm font-semibold whitespace-nowrap transition-colors ${
                     isSelected
                       ? 'border-blue-700 bg-blue-700 text-white dark:border-blue-500 dark:bg-blue-600'
                       : 'border-zinc-200 bg-white text-zinc-700 hover:border-zinc-300 hover:text-zinc-950 dark:border-zinc-800 dark:bg-zinc-900 dark:text-zinc-300 dark:hover:border-zinc-700 dark:hover:text-white'
@@ -296,17 +300,17 @@ export function ClickToProfitDiagram() {
             })}
           </div>
 
-          <div className="font-mono text-xs font-medium text-emerald-700 tabular-nums dark:text-emerald-400">
+          <div className="font-mono text-sm font-medium text-emerald-700 tabular-nums dark:text-emerald-400">
             {scenario.headlineResult}
           </div>
         </div>
 
         {/* Visual Connected Node-Graph Pipeline */}
-        <div className="mt-8 rounded-2xl border border-zinc-200 bg-white p-5 sm:p-8 dark:border-zinc-800 dark:bg-zinc-900">
+        <div className="mt-8 rounded-2xl border border-zinc-200 bg-white p-4 sm:p-8 dark:border-zinc-800 dark:bg-zinc-900">
           <div className="mb-6 flex flex-wrap items-center justify-between gap-3">
-            <p className="text-sm text-zinc-600 dark:text-zinc-300">{scenario.subtitle}</p>
-            <span className="font-mono text-xs text-zinc-500 dark:text-zinc-400">
-              Click any 3D stage node to inspect
+            <p className="text-base text-zinc-700 dark:text-zinc-300">{scenario.subtitle}</p>
+            <span className="font-mono text-xs text-zinc-500 sm:text-sm dark:text-zinc-400">
+              Tap any stage to inspect
             </span>
           </div>
 
@@ -349,7 +353,7 @@ export function ClickToProfitDiagram() {
               ))}
             </svg>
 
-            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-6">
+            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6">
               {scenario.stages.map((stage, idx) => {
                 const Icon3D = stage.Icon3D;
                 const isSelected = activeStageIdx === idx;
@@ -366,12 +370,12 @@ export function ClickToProfitDiagram() {
                   >
                     <div>
                       <div className="flex items-center justify-between gap-2">
-                        <span className="font-mono text-[11px] font-medium text-blue-700 tabular-nums dark:text-blue-400">
+                        <span className="font-mono text-xs font-medium text-blue-700 tabular-nums dark:text-blue-400">
                           Step {stage.step}
                         </span>
                         {idx < scenario.stages.length - 1 && (
                           <ArrowRight
-                            className="h-3.5 w-3.5 text-zinc-400 lg:hidden"
+                            className="h-4 w-4 text-zinc-400 xl:hidden"
                             aria-hidden="true"
                           />
                         )}
@@ -381,16 +385,16 @@ export function ClickToProfitDiagram() {
                         <Icon3D className="h-11 w-11" />
                       </div>
 
-                      <h3 className="font-display text-sm font-bold leading-snug text-zinc-950 dark:text-white">
+                      <h3 className="font-display text-base font-bold leading-snug text-zinc-950 dark:text-white">
                         {stage.title}
                       </h3>
-                      <p className="mt-1 text-[11px] font-medium text-zinc-500 dark:text-zinc-400">
+                      <p className="mt-1 text-xs font-medium text-zinc-500 sm:text-sm dark:text-zinc-400">
                         {stage.system}
                       </p>
                     </div>
 
                     <p
-                      className={`mt-3 border-t border-zinc-200 pt-2.5 text-xs leading-relaxed dark:border-zinc-800 ${
+                      className={`mt-3 border-t border-zinc-200 pt-2.5 text-sm leading-snug dark:border-zinc-800 ${
                         viewMode === 'verified'
                           ? 'text-emerald-700 dark:text-emerald-400'
                           : 'text-red-700 dark:text-red-400'
@@ -405,14 +409,14 @@ export function ClickToProfitDiagram() {
           </div>
 
           {/* Active Stage Diagnostic Bar */}
-          <div className="mt-6 grid grid-cols-1 gap-4 rounded-xl border border-zinc-200 bg-[#FAFAFA] p-5 md:grid-cols-12 md:items-center dark:border-zinc-800 dark:bg-zinc-950">
+          <div className="mt-6 grid grid-cols-1 gap-5 rounded-xl border border-zinc-200 bg-[#FAFAFA] p-5 md:grid-cols-12 md:items-center dark:border-zinc-800 dark:bg-zinc-950">
             <div className="flex items-center gap-4 md:col-span-5">
               <selectedStage.Icon3D className="h-12 w-12 shrink-0" />
               <div>
-                <div className="font-mono text-xs text-blue-700 dark:text-blue-400">
+                <div className="font-mono text-sm text-blue-700 dark:text-blue-400">
                   Stage {selectedStage.step} · {selectedStage.system}
                 </div>
-                <div className="font-display text-lg font-bold text-zinc-950 dark:text-white">
+                <div className="font-display text-xl font-bold text-zinc-950 dark:text-white">
                   {selectedStage.title}
                 </div>
               </div>
@@ -420,18 +424,18 @@ export function ClickToProfitDiagram() {
 
             <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:col-span-7">
               <div>
-                <div className="text-xs font-semibold text-zinc-500 dark:text-zinc-400">
+                <div className="text-sm font-semibold text-zinc-500 dark:text-zinc-400">
                   Without Instrumentation (Leak)
                 </div>
-                <p className="mt-1 text-sm text-zinc-900 dark:text-zinc-200">
+                <p className="mt-1 text-base text-zinc-900 dark:text-zinc-200">
                   {selectedStage.untrackedLeak}
                 </p>
               </div>
               <div>
-                <div className="text-xs font-semibold text-emerald-700 dark:text-emerald-400">
+                <div className="text-sm font-semibold text-emerald-700 dark:text-emerald-400">
                   Verified System Output
                 </div>
-                <p className="mt-1 text-sm font-medium text-zinc-950 dark:text-white">
+                <p className="mt-1 text-base font-medium text-zinc-950 dark:text-white">
                   {selectedStage.verifiedFlow}
                 </p>
               </div>
